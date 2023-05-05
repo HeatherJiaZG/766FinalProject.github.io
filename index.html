@@ -1,5 +1,18 @@
 <!doctype html>
 <html>
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+
+  img {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+</style>
+
 
 <head>
   <title>CS766 Project - Enhancing Image Resolution</title>
@@ -173,21 +186,34 @@
               preview of an augmented image from our ESRGAN implementation is
               shown below.
             </p>
-            <div class="row">
-              <div class="column">
-                <img src="img/pic6.png" alt="input image (blur)" style="width:
-                100%;">
-              </div>
-              <div class="column">
-                <img src="img/pic6_ESRGAN.png" alt="esrgan enhanced image" style="width:100%">
-              </div>
+            <div class="container">
+              <div class="image"> <img src="img/pic6.png" height="850px" /> </div>
+              <div class="image"> <img src="img/pic6_ESRGAN.png" height="850px" /></div>
             </div>
 
 
             <h4 id="Network Architecture">Network Architecture</h4>
             <p class="text">
-
+              ESRGAN introduces the Residual-in-Residual Dense Block as the
+              basic network unit to help better retain information from the
+              original iamge, which helps increase model capacity and reduce
+              computational complexity. Besides, batch normalization in SRGAN is
+              completely removed without accuracy sacrifice for better
+              performance and generalization ability. Other several ligh-weight
+              techniques are applied to facilitate the training process:
+              residual scaling multiplies the residual components by a constant
+              between 0 and 1 before adding them to the main path to scale down
+              the effect of residuals for higher stability. Also, making the
+              variance of the initial parameter lower speeds up the convergence.
             </p>
+
+            <div class="container">
+              <div class="image"> <img src="img/esrgan-architecture.png" height="850px" /> </div>
+            </div>
+            <div class="container">
+              <div class="image"> <img src="img/esrgan-architecture2.png" height="850px" /> </div>
+            </div>
+
 
 
             <!--This list is reversed on the website due to reverse number listing-->
@@ -534,7 +560,8 @@
                 <p class="text-small-margin">
                   <b>Google Official Blog</b>. 2013.
                   <a target="_blank"
-                    href="https://googleblog.blogspot.com/2013/05/a-picture-of-earth-through-time.html">A picture of
+                    href="https://googleblog.blogspot.com/2013/05/a-picture-of-earth-through-time.html">A
+                    picture of
                     Earth through time</a>.
                 </p>
               </li>

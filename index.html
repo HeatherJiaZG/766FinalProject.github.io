@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>[766 webpage] Yen-Chia Hsu</title>
+  <title>[cs766 project] Enhancing Image Resolution</title>
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
@@ -36,64 +36,37 @@
       <div class="content-table flex-column">
         <div class="flex-row">
           <div class="flex-item flex-column">
-            <img class="image" id="me" src="img/me.jpeg">
+            <!-- <img class="image" id="me" src="img/me.jpeg"> -->
           </div>
           <div class="flex-item flex-column">
-            <h2>Yen-Chia Hsu</h2>
+            <h2>Enhancing Image Resolution: A Comparative Study of Deep Learning Approaches for 4x Upscaling Single-Image Super-Resolution</h2>
             <p class="text">
-              Assistant Professor<br>
-              hsu.yenchia (at) gmail.com<br>
-              y.c.hsu (at) uva.nl<br>
-              <a href="https://ivi.uva.nl" target="_blank">Informatics Institute</a><br>
-              <a href="https://www.uva.nl/en" target="_blank">University of Amsterdam</a>, The Netherlands<br>
+              Jingquan Wang (jwang2373)<br>
+              Kunyang Li (kli253)<br>
+              Heather Jia (yjia42)<br>
             </p>
           </div>
         </div>
         <div class="flex-row">
           <div class="flex-item flex-column">
-            <h2>Biography</h2>
+            <h2>Background and Problem</h2>
             <hr>
             <p class="text">
-              I am a computer scientist with an architectural design background.
-              I research how to embed technology in hyper-local contexts to facilitate civic engagement and community empowerment.
-              <b>Specifically, my research is focused on Community-Empowered Artificial Intelligence (AI), where I co-design, implement, deploy, and evaluate interactive AI systems that empower communities, especially in addressing environmental and social issues.</b>
+              With the advent of AI, the problem of restoring more accurate brightness and realistic textures for low-resolution images has attracted much more attention. In this project, we plan to reimplement several popular deep learning approaches for 4x upscaling single-image super-resolution (SR), which refers to the challenging tasks of estimating a high-resolution image from its low-resolution counterpart. With nearly most of the methods proposed, there is still a clear gap between the model results and the ground truths. In spite of the breakthroughs in accuracy and speed of single image SR using faster and deeper convolutional neural networks, the major question remains unanswered: how to recover the finer texture details while super-resolving at high upscaling factors. More specifically, instead of only focusing on minimizing the mean square reconstruction error, researchers should also take high-frequency details of the images into consideration. For example, how to estimate photo-realistic natural images for 4x upscaling factors? What kind of model architecture and loss functions are more efficient? Attention on how to define a better and more efficient measurement for a more satisfying perceptual experience is needed for the problem.  
+            
             </p>
             <p class="text">
-              Traditionally, scientists lead research to engage citizens in tackling environmental and social issues (e.g., air pollution) on a large scale.
-              I have proposed an alternative, <a href="https://arxiv.org/abs/1907.11260" target="_blank">Community Citizen Science</a> (CCS), to extend this science-oriented method to a hyper-local scale.
-              CCS aims to empower communities and scientists to produce scientific knowledge, represent their voices, address local concerns, and shape more equitable power relationships.
-              In this way, CCS advances the current science-oriented method by emphasizing continued community engagement after technology interventions.
-              In my research, I apply crowdsourcing and data visualization to engage communities in providing and exploring data.
-              Also, I utilize machine learning, computer vision, and data science to assist communities in extracting and explaining patterns in multiple types of large-scale data.
-              For more details, please refer to my <a href="file/CV.pdf" target="_blank">CV</a>,
-              <a href="file/yenchiah-research-v5.pdf" target="_blank">research statement</a>,
-              <a href="file/yenchiah-teaching-v6.pdf" target="_blank">teaching statement</a>,
-              and <a href="file/yenchiah-diversity-v3.pdf" target="_blank">diversity statement</a>.
-              For people who speak Mandarin Chinese, if you are interested in the CCS concept, here is the <a href="https://www.youtube.com/watch?v=kxxwc3fT-aA" target="_blank">video recording of my previous talk (in Mandarin Chinese)</a> in the National Tsing Hua University in Taiwan on early 2021.
-              Also, here is <a href="https://www.youtube.com/watch?v=vHfCpwQqdLA" target="_blank">another video recording of a talk (in English)</a> that I gave to the air quality working group at the European Citizen Science Association on late 2021.
+              To enhance visual quality by generating plausible-looking natural images with high perceptual quality has become an attractive topic recently. This is large because it has been challenging to achieve before, but there are more promising directions with the arrival of AI, specifically machine learning algorithms, techniques – perceptual loss (i.e., optimize SR models in a feature space instead of pixel space), generative adversarial network (e.g., relativistic average GAN), etc. These advanced strategies can help bridge the gap between artificial images and natural ground truth. Three of the most representative ones published recently are SRCNN (super-resolution convolutional neural network), SRGAN (super-resolution generative adversarial network), and ESRGAN (enhanced super-resolution generative adversarial network). In our project, we plan to understand the underlying architecture and techniques, implement them, and further systematically compare their strengths and weaknesses. Besides, we will focus on different aspects of loss functions from the popular models, augment the loss function of SRCNN using techniques learned from other models to improve the performance. 
+              
             </p>
-            <p class="text">
-              I am an Assistant Professor at the <a href="https://ivi.uva.nl" target="_blank">Informatics Institute</a>, <a href="https://www.uva.nl/en" target="_blank">University of Amsterdam</a>.
-              Formerly, I was a Postdoctoral Researcher at the <a href="https://www.tudelft.nl/io/over-io/afdelingen/sustainable-design-engineering" target="_blank">Department of Sustainable Design Engineering</a>, <a href="https://www.tudelft.nl/en/ide/" target="_blank">Faculty of Industrial Design Engineering</a>, <a href="https://www.tudelft.nl/" target="_blank">TU Delft</a>, the Netherlands.
-              Before TU Delft, I was a Project Scientist in the <a href="https://www.cmucreatelab.org/" target="_blank">CREATE Lab</a> at <a href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a> (CMU), USA.
-              I received my <a href="https://www.ri.cmu.edu/education/academic-programs/doctoral-robotics-program/" target="_blank">Ph.D. degree in Robotics</a> in 2018 from the <a href="https://www.ri.cmu.edu/" target="_blank">Robotics Institute</a> at CMU, where I conducted research on using technology to empower local citizens and communities.
-              Previously, I received my Master's degree in <a href="https://soa.cmu.edu/mtid/" target="_blank">tangible interaction design</a> in 2012 from the <a href="https://soa.cmu.edu/" target="_blank">School of Architecture</a> at CMU, where I studied and built prototypes of interactive robots and wearable devices.
-              Before CMU, I earned my dual Bachelor's degree in both <a href="http://www.arch.ncku.edu.tw/en" target="_blank">architecture</a> and <a href="http://www.csie.ncku.edu.tw/ncku_csie/?lang=en" target="_blank">computer science</a> in 2010 at <a href="http://web.ncku.edu.tw/bin/home.php?Lang=en" target="_blank">National Cheng Kung University</a>, Taiwan.
-            </p>
-            <p class="text">
-              About my name, my given name is Yen-Chia, not Yen.
-              My English name (Yen-Chia Hsu) comes from the Wade-Giles transcription of my name in Traditional Mandarin Chinese.
-              In Taiwan, when using the Wade-Giles transcription system, we put a dash between our given name's characters.
-              Also, in Traditional Mandarin Chinese, we put the family name before the given name, which is different from the English naming conventions.
-              For pronunciation, Yen is like the Japanese yen, and Chia is like "ja" when saying Ninja.
-              My family name (Hsu) is hard to pronounce since the English system does not have such types of vocalization.
-              The closest sound is "she," not "su."
-            </p>
+            
+
+            
             <h3>Table of Content</h3>
             <ul>
-              <li><a href="#award">Awards and Honors</a></li>
-              <li><a href="#journal-paper">Referred Journal and Magazine Papers</a></li>
-              <li><a href="#conference-paper">Referred Conference Papers</a></li>
+              <li><a href="#importance">The Importance Of The Problem</a></li>
+              <li><a href="#SOTA">State-Of-The-Art</a></li>
+              <li><a href="#methodology">Methodology</a></li>
               <li><a href="#wip-paper">Referred Posters, Works-in-Progress, and Workshop Paper</a></li>
               <li><a href="#other-paper">Other Publications</a></li>
               <li><a href="#feature-media">Featured Media and Book Coverage</a></li>
@@ -102,92 +75,31 @@
               <li><a href="#teaching">Teaching</a></li>
               <li><a href="#project">Projects</a></li>
             </ul>
-            <h2 id="award">Awards and Honors</h2>
+
+
+
+            <h2 id="importance">The Importance Of The Problem</h2>
             <hr>
             <!--This list is reversed on the website due to reverse number listing-->
-            <ol class="publication A-list">
-              <li>
-                <p class="text-small-margin">
-                  Outstanding Student Academic Achievement.
-                  2005, 2006, 2007. Department of Architecture, National Cheng Kung University, Taiwan.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  Third Prize, National Country House Design Competition.
-                  2008. Ministry of the Interior, Taiwan.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <a target="_blank" href="http://www.yestaiwan.com.tw/page06_5.html">Best New Artist</a>.
-                  2009. The National Golden Award for Architecture, Taiwan.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <a target="_blank" href="https://www.webbyawards.com/winners/2014/web/website-features-and-design/best-use-of-video-or-moving-image/timelapse/">Webby People's Voice Award, Best Use of Video or Moving Image</a>.
-                  2014. International Academy of Digital Arts and Sciences, USA.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <a target="_blank" href="https://dl.acm.org/citation.cfm?id=3025853">Best Paper Honorable Mention Award (Top 5%)</a>.
-                  2017. ACM CHI Conference on Human Factors in Computing Systems, USA.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <a href="https://dl.acm.org/citation.cfm?id=3302293" target="_blank">Best Paper Honorable Mention Award (Top 2.5%, 7 out of 282 submissions)</a>.
-                  2019. ACM IUI Conference on Intelligent User Interfaces, USA.
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <a href="https://www.constellationprize.org/the-shenango-channel" target="_blank">Prize for Community Collaboration</a>.
-                  2020. The Constellation Prize, USA.
-                </p>
-              </li>
-            </ol>
-            <h2 id="journal-paper">Referred Journal and Magazine Papers</h2>
+            <p class="text">
+              The potential applications of the proposed project are numerous and exciting, with significant potential impact in various areas. People usually tend to use the highest quality possible for the videos they watch, indicating how visual quality is crucial in everyday life. It is also possible to “re-generate” popular anime produced long ago and bring the beloved classics back to the audience. The SR techniques can also be applied to cameras to make the blur objects far away from the camera much clearer with higher resolution. Besides, old photo recovery could also be an exciting field to apply SR. Old family photos from parents'/grandparents’ childhood could be restored with color and more details. It could also be applied to some historical pictures to make history more accessible and live to the public. The development of Computer Vision and SR approaches could push the state-of-the-art benchmark. Many proposed models exist, such as deeper networks with residual learning, Laplacian pyramid structure, and recursive learning.
+            </p>
+            
+
+
+            <h2 id="SOTA">State-Of-The-Art</h2>
             <hr>
-            <ol class="publication J-list">
-              <li>
-                <p class="text-small-margin">
-                  <b>Yen-Chia Hsu</b> and Illah Nourbakhsh. 2020. When Human-Computer Interaction Meets Community Citizen Science. Communications of the ACM.
-                  <br>
-                  <a href="file/ccs.pdf" target="_blank">PDF</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://doi.org/10.1145/3376892" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://arxiv.org/abs/1907.11260" target="_blank">Preprint</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://cacm.acm.org/magazines/2020/2/242344-when-human-computer-interaction-meets-community-citizen-science/fulltext" target="_blank">Webpage</a>
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>Yen-Chia Hsu</b>, Jennifer Cross, Paul Dille, Michael Tasota, Beatrice Dias, Randy Sargent, Ting-Hao Huang, and Illah Nourbakhsh. 2020. Smell Pittsburgh: Engaging Community Citizen Science for Air Quality. ACM Transactions on Interactive Intelligent Systems.
-                  <br>
-                  <a href="file/smell-pgh-journal.pdf" target="_blank">PDF</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://dl.acm.org/doi/10.1145/3369397" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://arxiv.org/abs/1912.11936" target="_blank">Preprint</a>
-                </p>
-              </li>
-              <li>
-                <p class="text-small-margin">
-                  <b>Yen-Chia Hsu</b>, Himanshu Verma, Andrea Mauri, Illah Nourbakhsh, and Alessandro Bozzon. 2022. Empowering local communities using artificial intelligence. Patterns, 3(3), 100449.
-                  <br>
-                  <a href="https://doi.org/10.1016/j.patter.2022.100449" target="_blank">Source</a>
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  <a href="https://arxiv.org/abs/2110.02007" target="_blank">Preprint</a>
-                </p>
-              </li>
-            </ol>
+            <p class="text">
+              Based on the Set14 dataset with a 4x upscaling task, the current state-of-the-art is the transformer-based neural network called HAT(Hybrid Attention Transformer), published in May 2022. Transformers have shown impressive performance on natural language processing tasks, and they have been applied to computer vision tasks nowadays, including image super-resolution tasks. However, we are not planning to implement HAT due to our lack of experience in transformers. 
+            </p>
+            
+            <p class="text">
+              The key idea behind HAT is to activate more pixels in the transformer architecture by using an adaptive activation function. The authors observed that existing transformer-based super-resolution models tend to focus on a small set of pixels in the input image, resulting in a loss of high-frequency information. The adaptive activation function used in HAT addresses this issue by allowing the model to selectively activate more pixels in the input image based on their relevance to the final output. HAT also introduces a novel channel attention mechanism that enables the model to adaptively weigh each feature map's importance in the transformer encoder. This helps the model to focus on the most informative features and reduce the noise in the input image. The authors showed that HAT outperforms state-of-the-art transformer-based super-resolution models, achieving significant improvements in quantitative and qualitative measures. 
+            </p>
+
+
             <!--This list is reversed on the website due to reverse number listing-->
-            <h2 id="conference-paper">Referred Conference Papers</h2>
+            <h2 id="methodology">Methodology</h2>
             <hr>
             <!--This list is reversed on the website due to reverse number listing-->
             <ol class="publication C-list">

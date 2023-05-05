@@ -214,6 +214,56 @@
               <div class="image"> <img src="img/esrgan-architecture2.png" height="850px" /> </div>
             </div>
 
+            <h4 id="Adversarial loss">Adversarial Loss</h4>
+            <p class="text">
+              ESRGAN improves the discriminator by redesigning its adversarial
+              losos with <a href="https://arxiv.org/abs/1807.00734">Relativistic
+                average GAN</a> (RaGAN). Instead of evaluating "whether one image
+              is real or fake", RaGAN focuses on "whether one image is mroe
+              realistic than another". This shift of focus helps the generator
+              to recover mroe realistic texture details of images by learning
+              sharper edges and mroe detailed features.
+            </p>
+            <div class="container">
+              <div class="image"> <img src="img/esrgan-ragan.png" height="850px" /> </div>
+              <div class="image"> <img src="img/esrgan-ragan_code.png" height="850px" /> </div>
+            </div>
+
+            <h4 id="Perceptual Loss">Perceptual Loss</h4>
+            <p class="text">
+              ESRGAN uses VGG features before activation rather than after
+              activation in SRGAN to enhance perceptual loss. This helps provide
+              sharper edges and more visually pleasing results. Features after
+              activation tend to be very sparse and, thus, can cause
+              inconsistent reconstructed brightness compared with ground-truth
+              images.
+
+              Furthermore, ESRGAN designs a network interpolation strategy to
+              balance perceptual quality and PSNR to remove noise in GAN-based
+              methods while maintaining excellent perceptual quality. It first
+              trains a PSNR-oriented network and then get a GAN-based network
+              through fine-tuning. Then ESRGAN interpolates all parameters of
+              these two networks correspondingly with a hyperparameter to derive
+              an interpolated model below. This will help continuously balance
+              perceptual quality and fidelity without re-training the model.
+            </p>
+            <div class="container">
+              <div class="image"> <img src="img/esrgan-perceptual_loss.png" height="850px" /> </div>
+            </div>
+
+            <p class="text">
+              Here are a few SR results enhanced by ESRGAN. (We used Set5 and
+              Set14 for evaluation.)
+            </p>
+
+            <div class="container">
+              <div class="image"> <img src="img/esrgan_res1.png" height="850px" /> </div>
+            </div>
+            <div class="container">
+              <div class="image"> <img src="img/esrgan_res2.png" height="850px" /> </div>
+            </div>
+
+
 
 
             <!--This list is reversed on the website due to reverse number listing-->

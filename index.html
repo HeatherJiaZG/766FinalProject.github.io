@@ -378,7 +378,7 @@
             </p>
 
             <div align="center">
-              <img src="img/srgan/srgan-chart.JPG" width="650px" alt="srgan chart"/> 
+              <img src="img/srgan/srgan-chart.JPG" width="700px" alt="srgan chart"/> 
               <div class="img-caption" align="center">SRGAN Evaluation Results</div>
             </div>
 
@@ -388,8 +388,12 @@
               loss. The content loss uses the euclidean distance between the VGG feature representations. The 
               adversarial loss generates highly realistic images that can help fool the discriminator. The 
               discriminator aims to train a generative model to fool a differentiable discriminator that is 
-              trained to distinguish generated images from real images. As for SRGAN experiments, we also toggled 
-              the combination of MSE and VGG losses used for the generator network and ran the experiments under 
+              trained to distinguish generated images from real images. 
+            </p>
+
+
+            <p class="text">
+              As for SRGAN experiments, we also toggled the combination of MSE and VGG losses used for the generator network and ran the experiments under 
               the same configurations. The training set is the entire CelebA dataset, which is a large-scale 
               face attributes dataset with more than 200K celebrity images. It takes a very long time to train 
               due to the limitations of our accessible machines. We trained each experiment in the chart above 

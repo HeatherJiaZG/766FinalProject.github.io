@@ -174,7 +174,7 @@
             <hr>
             <h3 id="srcnn">SRCNN</h3>
             <p class="text">
-              The SRCNN is the pioneer deep learning-based SR method proposed by Dong et al. in 2014. Here we present 
+              The <a href="https://arxiv.org/pdf/1501.00092v3.pdf">SRCNN</a> is the pioneer deep learning-based SR method proposed by Dong et al. in 2014. Here we present 
               our initial implementation of the original plain SRCNN. For the next steps, we plan to augment its loss 
               function using some SR tricks to improve the model.
             </p>
@@ -184,6 +184,12 @@
               which will be discussed in the following sections.  It consists of three two-dimensional convolutional 
               layers, each serving a specific purpose in the super-resolution process. Here's a detailed explanation of the network structure:
             </p>
+
+            <div align="center">
+              <img src="img/srcnn/srcnn-arch.png" width="700px" alt="srcnn exp1"/> 
+              <div class="img-caption" align="center">SRCNN Architecture</div>
+            </div>
+
             <p class="text">
               First Layer (Feature Extraction):
               The input to the network is a low-resolution (LR) image that has been upsampled to the desired 
@@ -217,8 +223,8 @@
             </p>
 
             <div align="center">
-              <img src="img/srcnn/srcnn-loss.JPG" width="340px" alt="srcnn exp1"/> 
-              <!-- <div class="img-caption" align="center">Input LR image, SRCNN generated image, and HR image (left to right)</div> -->
+              <img src="img/srcnn/srcnn-loss.JPG" width="270px" alt="srcnn exp1"/> 
+              <div class="img-caption" align="center">SRCNN Loss Function</div>
             </div>
 
             <p class="text">
@@ -244,9 +250,76 @@
             </p>
 
 
+
             <h3 id="srgan">SRGAN</h3>
+            <p class="text">
+              <a href="https://arxiv.org/pdf/1609.04802v5.pdf">SRGAN</a> is a generative adversarial network (GAN) for image superresolution (SR). Previous super-resolution 
+              methods lack the ability to effectively solve the images with large upscaling factors. SRGAN is the first 
+              framework capable of inferring photo-realistic natural images for 4× upscaling factors. This model 
+              employs a deep residual network (ResNet) with skip-connection and diverges from its MSE optimization 
+              target. It implements a GAN network with a loss function carefully designed for such SR problems. Its 
+              perceptual loss function consists of an adversarial loss and a content loss. 
+            </p>
+            <p class="text">
+              The ill-posed nature of the SR problem is particularly pronounced for high upscaling factors. Lacking 
+              more texture detail from the original image makes it more difficult to solve this undetermined problem. 
+              Intuitively, the previous deep network SR solutions commonly adopt a loss function that minimizes the 
+              mean squared error (MSE) between the recovered HR image and the ground truth image. Therefore, the 
+              previous loss functions mostly depict the pixel-wise differences between images. SRGAN’s uniquely 
+              designed loss function focuses more on perceptual similarity rather than the similarity on pixel level, 
+              as compared to the previous deep network SR solutions. It achieves the perceptual loss by minimizing 
+              the difference between the VGG high-level feature maps of the images. An output image pair of my trained 
+              SRGAN network is bellow.
+            </p>
 
+            <h4 id="Network Architecture">Network Architecture</h4>
+            <p class="text">
+              The network is trained using high resolution images and their low resolution counterparts in pairs. 
+              The goal is to obtain a generated high resolution image from an input low resolution image. The generator 
+              network is depicted as a feed-forward CNN $G_{\theta G}$. The discriminator network is noted 
+              as $D_{\theta D}$. The goal of network $G$ is to fool a differentiable discriminator network $D$ that 
+              is to distinguish SR images from real images. Thus, the generator $G$ learns to get better at generating 
+              photo-realistic SR images. Therefore, this network is able to produce perceptually superior solutions. 
+              The model aims to obtain the parameters that optimizes the objective bellow.
+            </p>
 
+            <div align="center">
+              <img src="img/srgan/srgan-arch.jpeg" width="630px" alt="srgan 0"/> 
+              <div class="img-caption" align="center">SRGAN Architecture</div>
+            </div>
+
+            <p class="text">
+              Specifically, network G uses two convolutional layers with small 3x3 kernels and 64 feature maps followed 
+              by batch-normalization layers and ParametricReLU as the activation function. It increases the resolution 
+              of the input image with two trained sub-pixel convolution layers. Network D contains eight convolutional 
+              layers with an increasing number of 3 × 3 filter kernels, increasing by a factor of 2 from 64 to 512
+               kernels as in the VGG network. It also uses strided convolutions to reduce the resolution each time 
+               the number of features is doubled. The resulting feature maps are followed by two dense layers and a 
+               final sigmoid activation function to obtain a probability for sample classification.
+            </p>
+
+            <h4 id="Loss Function">Loss Function</h4>
+            <p class="text">
+              SRGAN adopts a perceptual loss function $l^{SR}$. It focuses more on the perceptually relevant 
+              characteristics compared to the conventional MSE loss function of the previous SR networks. $l^{SR}$ 
+              is a weighted sum of a content loss and an adversarial loss component. MSE loss produces overly smooth 
+              textures. The conventional MSE loss often lacks high-frequency content, resulting in perceptually 
+              unsatisfying solutions. 
+            </p>
+
+            <p class="text">
+              The content loss is obtained from the ReLU activation layers of pre-trained VGG19. $l_X^{SR}$ 
+              ((equation \ref{eqn:SRGAN_contentloss})) is the Euclidean distance between the feature representations 
+              of a reconstructed image and the ground truth high-resolution image. The adversarial loss 
+              $l_{Gen}^{SR}$ ((equation \ref{eqn:SRGAN_advloss})) aims to raise the probability that the reconstructed
+               image looks natural. 
+            </p>
+
+            <div align="center">
+              <img src="img/srgan/test_0.jpg" width="600px" alt="srgan 0"/> 
+              <img src="img/srgan/test_11.jpg" width="600px" alt="srgan 11"/>
+              <div class="img-caption" align="center">Input LR image, HR image, SRGAN generated image (left to right)</div>
+            </div>
 
             <h3 id="esrgan">ESRGAN</h3>
             <p class="text">
@@ -507,7 +580,8 @@
               loss can achieve higher PSNR in the initial training epochs. As shown in these zebra pictures below, 
               if we heavily rely on perceptual loss, it shows more contrast and details of the texture, which is 
               not helpful to make the pictures look natural or smooth perceptually. However, it did help the 
-              model learn the textures fast. 
+              model learn the textures fast. For comparison, our ESRGAN is trained 20 epochs on CelebA dataset and achieves 
+              PSNR 24.22 on Set14 with a upsampling factor of 4.
             </p>
             <p class="text">
               

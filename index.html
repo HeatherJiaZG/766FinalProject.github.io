@@ -273,19 +273,22 @@
             </p>
 
             <h4 id="Network Architecture">Network Architecture</h4>
+
+            <div align="center">
+              <img src="img/srgan/srgan-arch.jpeg" width="630px" alt="srgan 0"/> 
+              <div class="img-caption" align="center">SRGAN Architecture</div>
+            </div>
             <p class="text">
               The network is trained using high resolution images and their low resolution counterparts in pairs. 
-              The goal is to obtain a generated high resolution image from an input low resolution image. The generator 
-              network is depicted as a feed-forward CNN $G_{\theta G}$. The discriminator network is noted 
-              as $D_{\theta D}$. The goal of network $G$ is to fool a differentiable discriminator network $D$ that 
-              is to distinguish SR images from real images. Thus, the generator $G$ learns to get better at generating 
+              The goal is to obtain a generated high resolution image from an input low resolution image. The goal of 
+              the generator network is to fool a differentiable discriminator network that is to distinguish SR images from real images. Thus, the generator learns to get better at generating 
               photo-realistic SR images. Therefore, this network is able to produce perceptually superior solutions. 
               The model aims to obtain the parameters that optimizes the objective bellow.
             </p>
 
             <div align="center">
-              <img src="img/srgan/srgan-arch.jpeg" width="630px" alt="srgan 0"/> 
-              <div class="img-caption" align="center">SRGAN Architecture</div>
+              <img src="img/srgan/goal.JPG" width="350px" alt="srgan 0"/> 
+              <!-- <div class="img-caption" align="center">SRGAN Architecture</div> -->
             </div>
 
             <p class="text">
@@ -300,19 +303,23 @@
 
             <h4 id="Loss Function">Loss Function</h4>
             <p class="text">
-              SRGAN adopts a perceptual loss function $l^{SR}$. It focuses more on the perceptually relevant 
-              characteristics compared to the conventional MSE loss function of the previous SR networks. $l^{SR}$ 
-              is a weighted sum of a content loss and an adversarial loss component. MSE loss produces overly smooth 
+              SRGAN adopts a special perceptual loss function. It focuses more on the perceptually relevant 
+              characteristics compared to the conventional MSE loss function of the previous SR networks. The generator loss 
+              is a weighted sum of a content loss and an adversarial loss component. MSE loss tends to produce overly smooth 
               textures. The conventional MSE loss often lacks high-frequency content, resulting in perceptually 
               unsatisfying solutions. 
             </p>
 
+            <div align="center">
+              <img src="img/srgan/loss1.JPG" width="400px" alt="srgan 0"/> 
+              <!-- <div class="img-caption" align="center">SRGAN Architecture</div> -->
+            </div>
+
             <p class="text">
-              The content loss is obtained from the ReLU activation layers of pre-trained VGG19. $l_X^{SR}$ 
-              ((equation \ref{eqn:SRGAN_contentloss})) is the Euclidean distance between the feature representations 
-              of a reconstructed image and the ground truth high-resolution image. The adversarial loss 
-              $l_{Gen}^{SR}$ ((equation \ref{eqn:SRGAN_advloss})) aims to raise the probability that the reconstructed
-               image looks natural. 
+              The content loss is obtained from the ReLU activation layers of pre-trained VGG19. SRGAN's content loss is the 
+              Euclidean distance between the feature representations of a reconstructed image and the ground truth 
+              high-resolution image. The adversarial loss aims to raise the probability that the reconstructed
+              image looks natural. 
             </p>
 
             <div align="center">

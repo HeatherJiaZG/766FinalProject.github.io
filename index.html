@@ -139,12 +139,20 @@
             <h2 id="SOTA">State-Of-The-Art</h2>
             <hr>
             <p class="text">
+              The current state-of-the-art is Activating More Pixels in Image Super-Resolution Transformer 
+              (<a href="https://arxiv.org/pdf/2205.04437v3.pdf">HAT</a>).
+              In this project, we are mostly interested in how perceptual loss and MSE loss effect the super resolution results and do not 
+              focus on HAT in this work. Despite the novel network architecture, HAT adopts a simple MSE loss.
               Based on the Set14 dataset with a 4x upscaling task, the current state-of-the-art is the transformer-based
               neural network called HAT(Hybrid Attention Transformer), published in May 2022. Transformers have shown
               impressive performance on natural language processing tasks, and they have been applied to computer vision
-              tasks nowadays, including image super-resolution tasks. However, we are not planning to implement HAT due
-              to our lack of experience in transformers.
+              tasks nowadays, including image super-resolution tasks. 
             </p>
+
+            <div align="center">
+              <img src="img/hat-arch.png" width="600px" alt="srcnn chart"/> 
+              <div class="img-caption" align="center">The overall architecture of HAT.</div>
+            </div>
 
             <p class="text">
               The key idea behind HAT is to activate more pixels in the transformer architecture by using an adaptive
@@ -258,11 +266,13 @@
               Set14 for evaluation.)
             </p>
 
-            <div class="container">
-              <div class="image"> <img src="img/esrgan_res1.png" height="850px" /> </div>
+            <div align="center">
+              <img src="img/esrgan_res1.png" width="650px" alt="esrgan_res2"/> 
+              <!-- <div class="img-caption" align="center">SRCNN Evaluation Results</div> -->
             </div>
-            <div class="container">
-              <div class="image"> <img src="img/esrgan_res2.png" height="850px" /> </div>
+            <div align="center">
+              <img src="img/esrgan_res2.png" width="650px" alt="esrgan_res2"/> 
+              <!-- <div class="img-caption" align="center">SRCNN Evaluation Results</div> -->
             </div>
 
 
@@ -390,7 +400,22 @@
               discriminator aims to train a generative model to fool a differentiable discriminator that is 
               trained to distinguish generated images from real images. 
             </p>
-
+            <div align="center">
+              <img src="img/srgan/exp1-img5.jpg" width="150px" alt="srgan exp1"/>
+              <img src="img/srgan/exp2-img5.jpg" width="150px" alt="srgan exp2"/>
+              <img src="img/srgan/hr_test_5.jpg" width="150px" alt="gt5"/>
+              </div>
+            <div align="center">
+              <img src="img/srgan/exp1-img10.jpg" width="150px" alt="srgan exp1"/>
+              <img src="img/srgan/exp2-img10.jpg" width="150px" alt="srgan exp2"/>
+              <img src="img/srgan/hr_test_10.jpg" width="150px" alt="gt5"/>
+              </div>
+            <div align="center">
+              <img src="img/srgan/exp1-img13.jpg" width="150px" alt="srgan exp1"/>
+              <img src="img/srgan/exp2-img13.jpg" width="150px" alt="srgan exp2"/>
+              <img src="img/srgan/hr_test_13.jpg" width="150px" alt="gt5"/>
+              <div class="img-caption" align="center">Outputs from SRGAN EXP1, EXP2, and ground truth HR image (left to right)</div>
+            </div>
 
             <p class="text">
               As for SRGAN experiments, we also toggled the combination of MSE and VGG losses used for the generator network and ran the experiments under 

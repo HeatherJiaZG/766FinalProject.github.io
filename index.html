@@ -81,7 +81,7 @@
               for the problem.
             </p>
             <div align="center">
-              <img src="img/intro1.png" width="650px" alt="srcnn chart"/> 
+              <img src="img/intro1.png" width="650px" alt="srcnn chart" />
               <div class="img-caption" align="center">Low Resolution to High Resolution</div>
             </div>
 
@@ -139,18 +139,19 @@
             <h2 id="SOTA">State-Of-The-Art</h2>
             <hr>
             <p class="text" align="justify">
-              The current state-of-the-art is Activating More Pixels in Image Super-Resolution Transformer 
+              The current state-of-the-art is Activating More Pixels in Image Super-Resolution Transformer
               (<a href="https://arxiv.org/pdf/2205.04437v3.pdf">HAT</a>).
-              In this project, we are mostly interested in how perceptual loss and MSE loss effect the super resolution results and do not 
+              In this project, we are mostly interested in how perceptual loss and MSE loss effect the super resolution
+              results and do not
               focus on HAT in this work. Despite the novel network architecture, HAT adopts a simple MSE loss.
               Based on the Set14 dataset with a 4x upscaling task, the current state-of-the-art is the transformer-based
               neural network called HAT(Hybrid Attention Transformer), published in May 2022. Transformers have shown
               impressive performance on natural language processing tasks, and they have been applied to computer vision
-              tasks nowadays, including image super-resolution tasks. 
+              tasks nowadays, including image super-resolution tasks.
             </p>
 
             <div align="center">
-              <img src="img/hat-arch.png" width="600px" alt="srcnn chart"/> 
+              <img src="img/hat-arch.png" width="600px" alt="srcnn chart" />
               <div class="img-caption" align="center">The overall architecture of HAT.</div>
             </div>
 
@@ -174,158 +175,168 @@
             <hr>
             <h3 id="srcnn">SRCNN</h3>
             <p class="text" align="justify">
-              The <a href="https://arxiv.org/pdf/1501.00092v3.pdf">SRCNN</a> is the pioneer deep learning-based SR method proposed by Dong et al. in 2014. Here we present 
-              our initial implementation of the original plain SRCNN. For the next steps, we plan to augment its loss 
+              The <a href="https://arxiv.org/pdf/1501.00092v3.pdf">SRCNN</a> is the pioneer deep learning-based SR
+              method proposed by Dong et al. in 2014. Here we present
+              our initial implementation of the original plain SRCNN. For the next steps, we plan to augment its loss
               function using some SR tricks to improve the model.
             </p>
             <h4 id="Network Architecture">Network Architecture</h4>
             <p class="text" align="justify">
-              The SRCNN is a relatively simple deep learning model compared to other more complex architectures, 
-              which will be discussed in the following sections.  It consists of three two-dimensional convolutional 
-              layers, each serving a specific purpose in the super-resolution process. Here's a detailed explanation of the network structure:
+              The SRCNN is a relatively simple deep learning model compared to other more complex architectures,
+              which will be discussed in the following sections. It consists of three two-dimensional convolutional
+              layers, each serving a specific purpose in the super-resolution process. Here's a detailed explanation of
+              the network structure:
             </p>
 
             <div align="center">
-              <img src="img/srcnn/srcnn-arch.png" width="700px" alt="srcnn exp1"/> 
+              <img src="img/srcnn/srcnn-arch.png" width="700px" alt="srcnn exp1" />
               <div class="img-caption" align="center">SRCNN Architecture</div>
             </div>
 
             <p class="text" align="justify">
               First Layer (Feature Extraction):
-              The input to the network is a low-resolution (LR) image that has been upsampled to the desired 
-              high-resolution size using bicubic interpolation. This upsampling step is performed before feeding 
+              The input to the network is a low-resolution (LR) image that has been upsampled to the desired
+              high-resolution size using bicubic interpolation. This upsampling step is performed before feeding
               the image into the network.
-              The first layer consists of a convolutional layer with multiple filters (e.g., 64 filters), a 
+              The first layer consists of a convolutional layer with multiple filters (e.g., 64 filters), a
               relatively large kernel size (e.g., 9x9), and a ReLU (Rectified Linear Unit) activation function.
-              This layer's purpose is to extract features from the upsampled LR image. The filters in this layer 
+              This layer's purpose is to extract features from the upsampled LR image. The filters in this layer
               learn to recognize different image patterns, such as edges, textures, and shapes.
             </p>
             <p class="text" align="justify">
               Second Layer (Non-linear Mapping):
-              The second layer is another convolutional layer, typically with a smaller kernel size (e.g., 5x5 or 3x3) 
+              The second layer is another convolutional layer, typically with a smaller kernel size (e.g., 5x5 or 3x3)
               and a larger number of filters (e.g., 32 filters).
-              This layer is responsible for non-linear mapping, meaning it maps the extracted features from the 
-              first layer to a high-resolution feature space. It also uses a ReLU activation function to introduce 
+              This layer is responsible for non-linear mapping, meaning it maps the extracted features from the
+              first layer to a high-resolution feature space. It also uses a ReLU activation function to introduce
               non-linearity.
             </p>
             <p class="text" align="justify">
               Third Layer (Reconstruction):
-              The third and final layer is a convolutional layer with a single filter and a small kernel size 
+              The third and final layer is a convolutional layer with a single filter and a small kernel size
               (e.g., 5x5 or 3x3).
-              This layer's purpose is to reconstruct the high-resolution image from the feature maps generated 
-              by the previous layer. It does not use an activation function, as the output needs to be a continuous range of pixel intensity values.
+              This layer's purpose is to reconstruct the high-resolution image from the feature maps generated
+              by the previous layer. It does not use an activation function, as the output needs to be a continuous
+              range of pixel intensity values.
               The output of this layer is the final high-resolution image that the network generates.
-              The SRCNN is trained using pairs of low-resolution and corresponding high-resolution images. 
-              The objective is to minimize the difference (e.g., using Mean Squared Error) between the predicted 
-              high-resolution image and the ground truth high-resolution image. By adjusting the weights of the 
-              filters during training, the network learns to produce high-resolution images that are close to 
+              The SRCNN is trained using pairs of low-resolution and corresponding high-resolution images.
+              The objective is to minimize the difference (e.g., using Mean Squared Error) between the predicted
+              high-resolution image and the ground truth high-resolution image. By adjusting the weights of the
+              filters during training, the network learns to produce high-resolution images that are close to
               the ground truth.
             </p>
 
             <div align="center">
-              <img src="img/srcnn/srcnn-loss.JPG" width="270px" alt="srcnn exp1"/> 
+              <img src="img/srcnn/srcnn-loss.JPG" width="270px" alt="srcnn exp1" />
               <div class="img-caption" align="center">SRCNN Loss Function</div>
             </div>
 
             <p class="text" align="justify">
-              For SRCNN, the loss function is defined as the pixel-wise mean square error between the output image 
-              F(Y, Theta) and the ground truth image X, which means it will lead to maximum the peak 
-              signal-to-noise ratio. But here, we believe the MSE loss is not the optimal loss function for capturing 
+              For SRCNN, the loss function is defined as the pixel-wise mean square error between the output image
+              F(Y, Theta) and the ground truth image X, which means it will lead to maximum the peak
+              signal-to-noise ratio. But here, we believe the MSE loss is not the optimal loss function for capturing
               the perceptual distance, so we tried the vgg loss in the experiment.
             </p>
 
             <div align="center">
-              <img src="img/srcnn/input1.png" width="200px" alt="srcnn exp1"/> 
-              <img src="img/srcnn/srcnn1.png" width="200px" alt="srcnn exp2"/>
-              <img src="img/srcnn/hr1.png" width="200px" alt="srcnn exp3"/>
-              <div class="img-caption" align="center">Input LR image, SRCNN generated image, and HR image (left to right)</div>
+              <img src="img/srcnn/input1.png" width="200px" alt="srcnn exp1" />
+              <img src="img/srcnn/srcnn1.png" width="200px" alt="srcnn exp2" />
+              <img src="img/srcnn/hr1.png" width="200px" alt="srcnn exp3" />
+              <div class="img-caption" align="center">Input LR image, SRCNN generated image, and HR image (left to
+                right)</div>
             </div>
 
             <p class="text" align="justify">
-              In summary, the SRCNN consists of three convolutional layers: a feature extraction layer, a non-linear 
-              mapping layer, and a reconstruction layer. The architecture is simple yet effective for super-resolution 
-              tasks. However, more recent methods have improved upon this structure, introducing deeper networks, 
-              residual connections, and other enhancements to achieve better performance. An output image pair of 
-              our trained SRCNN network is in the figure above. 
+              In summary, the SRCNN consists of three convolutional layers: a feature extraction layer, a non-linear
+              mapping layer, and a reconstruction layer. The architecture is simple yet effective for super-resolution
+              tasks. However, more recent methods have improved upon this structure, introducing deeper networks,
+              residual connections, and other enhancements to achieve better performance. An output image pair of
+              our trained SRCNN network is in the figure above.
             </p>
 
 
 
             <h3 id="srgan">SRGAN</h3>
             <p class="text" align="justify">
-              <a href="https://arxiv.org/pdf/1609.04802v5.pdf">SRGAN</a> is a generative adversarial network (GAN) for image superresolution (SR). Previous super-resolution 
-              methods lack the ability to effectively solve the images with large upscaling factors. SRGAN is the first 
-              framework capable of inferring photo-realistic natural images for 4× upscaling factors. This model 
-              employs a deep residual network (ResNet) with skip-connection and diverges from its MSE optimization 
-              target. It implements a GAN network with a loss function carefully designed for such SR problems. Its 
-              perceptual loss function consists of an adversarial loss and a content loss. 
+              <a href="https://arxiv.org/pdf/1609.04802v5.pdf">SRGAN</a> is a generative adversarial network (GAN) for
+              image superresolution (SR). Previous super-resolution
+              methods lack the ability to effectively solve the images with large upscaling factors. SRGAN is the first
+              framework capable of inferring photo-realistic natural images for 4× upscaling factors. This model
+              employs a deep residual network (ResNet) with skip-connection and diverges from its MSE optimization
+              target. It implements a GAN network with a loss function carefully designed for such SR problems. Its
+              perceptual loss function consists of an adversarial loss and a content loss.
             </p>
             <p class="text" align="justify">
-              The ill-posed nature of the SR problem is particularly pronounced for high upscaling factors. Lacking 
-              more texture detail from the original image makes it more difficult to solve this undetermined problem. 
-              Intuitively, the previous deep network SR solutions commonly adopt a loss function that minimizes the 
-              mean squared error (MSE) between the recovered HR image and the ground truth image. Therefore, the 
-              previous loss functions mostly depict the pixel-wise differences between images. SRGAN’s uniquely 
-              designed loss function focuses more on perceptual similarity rather than the similarity on pixel level, 
-              as compared to the previous deep network SR solutions. It achieves the perceptual loss by minimizing 
-              the difference between the VGG high-level feature maps of the images. An output image pair of my trained 
+              The ill-posed nature of the SR problem is particularly pronounced for high upscaling factors. Lacking
+              more texture detail from the original image makes it more difficult to solve this undetermined problem.
+              Intuitively, the previous deep network SR solutions commonly adopt a loss function that minimizes the
+              mean squared error (MSE) between the recovered HR image and the ground truth image. Therefore, the
+              previous loss functions mostly depict the pixel-wise differences between images. SRGAN’s uniquely
+              designed loss function focuses more on perceptual similarity rather than the similarity on pixel level,
+              as compared to the previous deep network SR solutions. It achieves the perceptual loss by minimizing
+              the difference between the VGG high-level feature maps of the images. An output image pair of my trained
               SRGAN network is bellow.
             </p>
 
             <h4 id="Network Architecture">Network Architecture</h4>
 
             <div align="center">
-              <img src="img/srgan/srgan-arch.jpeg" width="630px" alt="srgan 0"/> 
+              <img src="img/srgan/srgan-arch.jpeg" width="630px" alt="srgan 0" />
               <div class="img-caption" align="center">SRGAN Architecture</div>
             </div>
             <p class="text" align="justify">
-              The network is trained using high resolution images and their low resolution counterparts in pairs. 
-              The goal is to obtain a generated high resolution image from an input low resolution image. The goal of 
-              the generator network is to fool a differentiable discriminator network that is to distinguish SR images from real images. Thus, the generator learns to get better at generating 
-              photo-realistic SR images. Therefore, this network is able to produce perceptually superior solutions. 
+              The network is trained using high resolution images and their low resolution counterparts in pairs.
+              The goal is to obtain a generated high resolution image from an input low resolution image. The goal of
+              the generator network is to fool a differentiable discriminator network that is to distinguish SR images
+              from real images. Thus, the generator learns to get better at generating
+              photo-realistic SR images. Therefore, this network is able to produce perceptually superior solutions.
               The model aims to obtain the parameters that optimizes the objective bellow.
             </p>
 
             <div align="center">
-              <img src="img/srgan/goal.JPG" width="350px" alt="srgan 0"/> 
+              <img src="img/srgan/goal.JPG" width="350px" alt="srgan 0" />
               <!-- <div class="img-caption" align="center">SRGAN Architecture</div> -->
             </div>
 
             <p class="text" align="justify">
-              Specifically, network G uses two convolutional layers with small 3x3 kernels and 64 feature maps followed 
-              by batch-normalization layers and ParametricReLU as the activation function. It increases the resolution 
-              of the input image with two trained sub-pixel convolution layers. Network D contains eight convolutional 
+              Specifically, network G uses two convolutional layers with small 3x3 kernels and 64 feature maps followed
+              by batch-normalization layers and ParametricReLU as the activation function. It increases the resolution
+              of the input image with two trained sub-pixel convolution layers. Network D contains eight convolutional
               layers with an increasing number of 3 × 3 filter kernels, increasing by a factor of 2 from 64 to 512
-               kernels as in the VGG network. It also uses strided convolutions to reduce the resolution each time 
-               the number of features is doubled. The resulting feature maps are followed by two dense layers and a 
-               final sigmoid activation function to obtain a probability for sample classification.
+              kernels as in the VGG network. It also uses strided convolutions to reduce the resolution each time
+              the number of features is doubled. The resulting feature maps are followed by two dense layers and a
+              final sigmoid activation function to obtain a probability for sample classification.
             </p>
 
             <h4 id="Loss Function">Loss Function</h4>
             <p class="text" align="justify">
-              SRGAN adopts a special perceptual loss function. It focuses more on the perceptually relevant 
-              characteristics compared to the conventional MSE loss function of the previous SR networks. The generator loss 
-              is a weighted sum of a content loss and an adversarial loss component. MSE loss tends to produce overly smooth 
-              textures. The conventional MSE loss often lacks high-frequency content, resulting in perceptually 
-              unsatisfying solutions. 
+              SRGAN adopts a special perceptual loss function. It focuses more on the perceptually relevant
+              characteristics compared to the conventional MSE loss function of the previous SR networks. The generator
+              loss
+              is a weighted sum of a content loss and an adversarial loss component. MSE loss tends to produce overly
+              smooth
+              textures. The conventional MSE loss often lacks high-frequency content, resulting in perceptually
+              unsatisfying solutions.
             </p>
 
             <div align="center">
-              <img src="img/srgan/loss1.JPG" width="400px" alt="srgan 0"/> 
+              <img src="img/srgan/loss1.JPG" width="400px" alt="srgan 0" />
               <!-- <div class="img-caption" align="center">SRGAN Architecture</div> -->
             </div>
 
             <p class="text" align="justify">
-              The content loss is obtained from the ReLU activation layers of pre-trained VGG19. SRGAN's content loss is the 
-              Euclidean distance between the feature representations of a reconstructed image and the ground truth 
+              The content loss is obtained from the ReLU activation layers of pre-trained VGG19. SRGAN's content loss is
+              the
+              Euclidean distance between the feature representations of a reconstructed image and the ground truth
               high-resolution image. The adversarial loss aims to raise the probability that the reconstructed
-              image looks natural. 
+              image looks natural.
             </p>
 
             <div align="center">
-              <img src="img/srgan/test_0.jpg" width="600px" alt="srgan 0"/> 
-              <img src="img/srgan/test_11.jpg" width="600px" alt="srgan 11"/>
-              <div class="img-caption" align="center">Input LR image, HR image, SRGAN generated image (left to right)</div>
+              <img src="img/srgan/test_0.jpg" width="600px" alt="srgan 0" />
+              <img src="img/srgan/test_11.jpg" width="600px" alt="srgan 11" />
+              <div class="img-caption" align="center">Input LR image, HR image, SRGAN generated image (left to right)
+              </div>
             </div>
 
             <h3 id="esrgan">ESRGAN</h3>
@@ -425,199 +436,244 @@
             </p>
 
             <div align="center">
-              <img src="img/esrgan_res1.png" width="650px" alt="esrgan_res2"/> 
+              <img src="img/esrgan_res1.png" width="650px" alt="esrgan_res2" />
               <!-- <div class="img-caption" align="center">SRCNN Evaluation Results</div> -->
             </div>
             <div align="center">
-              <img src="img/esrgan_res2.png" width="650px" alt="esrgan_res2"/> 
+              <img src="img/esrgan_res2.png" width="650px" alt="esrgan_res2" />
               <!-- <div class="img-caption" align="center">SRCNN Evaluation Results</div> -->
             </div>
 
 
 
             <!--This list is reversed on the website due to reverse number listing-->
-            
+
             <h2 id="eval">Loss Function Investigation and Evaluation</h2>
             <hr>
             <p class="text" align="justify">
-              Image super-resolution is by nature an ill-posed problem. With a single blurry image, 
+              Image super-resolution is by nature an ill-posed problem. With a single blurry image,
               there is no evidence of the ground truth details. If the upscaling factor is too large,
-               a great amount of information from the original high-resolution image could be lost. 
-               The results of super-resolution are normally evaluated by peak signal-to-noise ratio 
-               (PSNR) value. Therefore, most of the supervised algorithms that deal with super-resolution 
-               make use of the mean squared error loss between the high-resolution image that is 
-               acquired and the ground truth of the particular image. Minimizing MSE value automatically 
-               maximizes PSNR. 
+              a great amount of information from the original high-resolution image could be lost.
+              The results of super-resolution are normally evaluated by peak signal-to-noise ratio
+              (PSNR) value. Therefore, most of the supervised algorithms that deal with super-resolution
+              make use of the mean squared error loss between the high-resolution image that is
+              acquired and the ground truth of the particular image. Minimizing MSE value automatically
+              maximizes PSNR.
             </p>
 
             <p class="text" align="justify">
-              SRCNN was one of the first works which explored deep convolutional neural networks for 
-              image super resolution. Although it is a very simple neural network that consists of 
-              only three parts, it is yet very powerful in solving the single-image super-resolution 
-              problem. It learns to map the low resolution images to the high resolution ones with little 
-              pre or post processing. Its simple structure consists of patch extraction and representation, 
+              SRCNN was one of the first works which explored deep convolutional neural networks for
+              image super resolution. Although it is a very simple neural network that consists of
+              only three parts, it is yet very powerful in solving the single-image super-resolution
+              problem. It learns to map the low resolution images to the high resolution ones with little
+              pre or post processing. Its simple structure consists of patch extraction and representation,
               non-linear mapping, and reconstruction. Its loss function is very powerful and effective
-               in solving the problem. It adopts a standard loss function, which is the average of mean 
-               square error for the training samples. It aims to minimize the MSE difference between the
-                generated super-resolution image and the original ground truth high-resolution image via
-                 back propagation. SRCNN proves to train quicker and achieve high-level accuracy.
+              in solving the problem. It adopts a standard loss function, which is the average of mean
+              square error for the training samples. It aims to minimize the MSE difference between the
+              generated super-resolution image and the original ground truth high-resolution image via
+              back propagation. SRCNN proves to train quicker and achieve high-level accuracy.
             </p>
 
             <p class="text" align="justify">
-              However, PSNR value is more oriented towards finding the features of each individual pixel 
+              However, PSNR value is more oriented towards finding the features of each individual pixel
               and not more visually perceptive attributes such as the high texture detail of the particular
-               picture. Some papers also evaluate the results with human perception scores. For example, 
-               SRGAN uses a feature extraction network to get the embeddings of the generated SR image and 
-               minimizes the difference between the embeddings of the ground truth HR image. This is 
-               addressed as content loss. It focuses less on the pixel-by-pixel comparison of the images, 
-               and is mostly concerned about the improvement in the overall quality of the images. The 
-               lower resolutions fail to highlight some of the finer and critical details in the generated 
-               picture, which is solved with an increase in the resolution and overall quality. They 
-               prefer to consume most visualizations in the modern world in the highest quality so that 
-               we as the audience and viewers can have the best experience from the particular content. 
-               Similarly, ESRAN adopts a perceptual loss with minor modifications to the network architecture. 
+              picture. Some papers also evaluate the results with human perception scores. For example,
+              SRGAN uses a feature extraction network to get the embeddings of the generated SR image and
+              minimizes the difference between the embeddings of the ground truth HR image. This is
+              addressed as content loss. It focuses less on the pixel-by-pixel comparison of the images,
+              and is mostly concerned about the improvement in the overall quality of the images. The
+              lower resolutions fail to highlight some of the finer and critical details in the generated
+              picture, which is solved with an increase in the resolution and overall quality. They
+              prefer to consume most visualizations in the modern world in the highest quality so that
+              we as the audience and viewers can have the best experience from the particular content.
+              Similarly, ESRAN adopts a perceptual loss with minor modifications to the network architecture.
             </p>
 
             <p class="text" align="justify">
-              With the improvements made by SRGAN and ESRGAN, we are thinking how content and MSE loss 
-              functions might affect model performance for the single-image super-resolution problem with 
-              a X4 upscaling factor. We modify the loss functions of SRCNN and SGRAN to explore how different 
-              weights of two kinds of loss function components perform under CNN and GAN network architectures. 
-              For evaluation metrics, we use PSNR, a typical and widely-used measure to evaluate SR algorithms, 
-              and also human perception, which makes the evaluation more practical for real world use cases. 
-              The PSNR evaluations are performed on Set5 and Set14 datasets, which are standard evaluation 
-              datasets for the single-image super-resolution problem. 
+              With the improvements made by SRGAN and ESRGAN, we are thinking how content and MSE loss
+              functions might affect model performance for the single-image super-resolution problem with
+              a X4 upscaling factor. We modify the loss functions of SRCNN and SGRAN to explore how different
+              weights of two kinds of loss function components perform under CNN and GAN network architectures.
+              For evaluation metrics, we use PSNR, a typical and widely-used measure to evaluate SR algorithms,
+              and also human perception, which makes the evaluation more practical for real world use cases.
+              The PSNR evaluations are performed on Set5 and Set14 datasets, which are standard evaluation
+              datasets for the single-image super-resolution problem.
             </p>
 
             <div align="center">
-              <img src="img/srcnn/srcnn-chart.JPG" width="650px" alt="srcnn chart"/> 
+              <img src="img/srcnn/srcnn-chart.JPG" width="650px" alt="srcnn chart" />
               <div class="img-caption" align="center">SRCNN Evaluation Results</div>
             </div>
-            
+
             <p class="text" align="justify">
-              For the content loss in our experiments, we are referring to comparing a pretrained VGG19 
-              network output specifically. The only way that the real image VGG output and the fake image 
-              VGG output will be similar is when the input images themselves are similar. The intuition 
-              behind this is that pixel-wise comparison will help compound the core objective of achieving 
+              For the content loss in our experiments, we are referring to comparing a pretrained VGG19
+              network output specifically. The only way that the real image VGG output and the fake image
+              VGG output will be similar is when the input images themselves are similar. The intuition
+              behind this is that pixel-wise comparison will help compound the core objective of achieving
               super-resolution. In this section, we show how different weights of content loss and MSE loss
-               affect the training results and training efforts on CNN and GAN models for the x4 downscaled 
-               single-image super-resolution problem. 
+              affect the training results and training efforts on CNN and GAN models for the x4 downscaled
+              single-image super-resolution problem.
             </p>
 
             <p class="text" align="justify">
-              The chart above shows the experiments on SRCNN. All experiments are trained 400 epochs on the 
-              “91-image” dataset. Each image from the training dataset is cropped to 32*32 sub-images and 
-              used as the input for the network. Each epoch contains over 24k sub-images, extracted from the 
-              original images with a stride of 4. The middle column indicates the loss function used on the 
-              CNN model, which is the only difference between these experiments that share the same network 
-              architecture. For example, EXP5 is the original SRCNN and gets a PSNR value even better than 
-              the original SRCNN paper. Vgg_loss is calculated by the L1 distance between the VGG output of 
-              the generated image and the ground truth HR image. The last column is the PSNR evaluation result 
-              on Set14 downsampled by 4. 
+              The chart above shows the experiments on SRCNN. All experiments are trained 400 epochs on the
+              “91-image” dataset. Each image from the training dataset is cropped to 32*32 sub-images and
+              used as the input for the network. Each epoch contains over 24k sub-images, extracted from the
+              original images with a stride of 4. The middle column indicates the loss function used on the
+              CNN model, which is the only difference between these experiments that share the same network
+              architecture. For example, EXP5 is the original SRCNN and gets a PSNR value even better than
+              the original SRCNN paper. Vgg_loss is calculated by the L1 distance between the VGG output of
+              the generated image and the ground truth HR image. The last column is the PSNR evaluation result
+              on Set14 downsampled by 4.
             </p>
 
 
             <div align="center">
-              <img src="img/srcnn/srcnn-exp1.png" width="150px" alt="srcnn exp1"/> 
-              <img src="img/srcnn/srcnn-exp2.png" width="150px" alt="srcnn exp2"/>
-              <img src="img/srcnn/srcnn-exp3.png" width="150px" alt="srcnn exp3"/>
+              <img src="img/srcnn/srcnn-exp1.png" width="150px" alt="srcnn exp1" />
+              <img src="img/srcnn/srcnn-exp2.png" width="150px" alt="srcnn exp2" />
+              <img src="img/srcnn/srcnn-exp3.png" width="150px" alt="srcnn exp3" />
               <div class="img-caption" align="center">Outputs from SRCNN EXP1, EXP2, EXP3 (left to right)</div>
             </div>
             <div align="center">
-              <img src="img/srcnn/srcnn-exp4.png" width="150px" alt="srcnn exp4"/>
-              <img src="img/srcnn/srcnn-exp5.png" width="150px" alt="srcnn exp5"/>
-              <img src="img/srcnn/srcnn-exp6.png" width="150px" alt="srcnn exp6"/>
+              <img src="img/srcnn/srcnn-exp4.png" width="150px" alt="srcnn exp4" />
+              <img src="img/srcnn/srcnn-exp5.png" width="150px" alt="srcnn exp5" />
+              <img src="img/srcnn/srcnn-exp6.png" width="150px" alt="srcnn exp6" />
               <div class="img-caption" align="center">Outputs from SRCNN EXP4, EXP5, EXP6 (left to right)</div>
             </div>
 
             <p class="text" align="justify">
-              We toggled the combination of MSE and VGG losses used for the network and ran the experiments 
-              under the same configurations. As can be seen from this chart, increasing the weight of VGG 
-              loss on SRCNN produces better PSNR results on Set14 (in EXP3). However, its generated images 
-              look less smooth. Perceptually speaking, evaluation on Set14 shows that a higher weight of MSE 
-              loss function results in a more smooth output image. While the images created with more VGG loss 
-              involved show more contrast and details but are less smooth, which is further explained in SRGAN 
-              experiments. As expected, EXP6 creates images that look very far from the original image. It is 
-              partly because we used only one channel as the input to the VGG layer and thus it does not 
-              extract color information. This is why the example image from EXP6 shows a skeleton of the 
-              image but does not show correct color. It results in an extremely low PSNR evaluation result. 
-              These experiments in the chart all reach their highest evaluation PSNR around the late 300s 
-              epochs, which shows little evidence of training efficiency in different configurations. 
+              We toggled the combination of MSE and VGG losses used for the network and ran the experiments
+              under the same configurations. As can be seen from this chart, increasing the weight of VGG
+              loss on SRCNN produces better PSNR results on Set14 (in EXP3). However, its generated images
+              look less smooth. Perceptually speaking, evaluation on Set14 shows that a higher weight of MSE
+              loss function results in a more smooth output image. While the images created with more VGG loss
+              involved show more contrast and details but are less smooth, which is further explained in SRGAN
+              experiments. As expected, EXP6 creates images that look very far from the original image. It is
+              partly because we used only one channel as the input to the VGG layer and thus it does not
+              extract color information. This is why the example image from EXP6 shows a skeleton of the
+              image but does not show correct color. It results in an extremely low PSNR evaluation result.
+              These experiments in the chart all reach their highest evaluation PSNR around the late 300s
+              epochs, which shows little evidence of training efficiency in different configurations.
             </p>
 
             <div align="center">
-              <img src="img/srgan/srgan-chart.JPG" width="700px" alt="srgan chart"/> 
+              <img src="img/srgan/srgan-chart.JPG" width="700px" alt="srgan chart" />
               <div class="img-caption" align="center">SRGAN Evaluation Results</div>
             </div>
 
             <p class="text" align="justify">
-              SRGAN adopts a VGG loss as part of its generator loss function in the original setting. It uses 
-              a perceptual loss, which is the weighted sum of two loss components: content loss and adversarial 
-              loss. The content loss uses the euclidean distance between the VGG feature representations. The 
-              adversarial loss generates highly realistic images that can help fool the discriminator. The 
-              discriminator aims to train a generative model to fool a differentiable discriminator that is 
-              trained to distinguish generated images from real images. 
+              SRGAN adopts a VGG loss as part of its generator loss function in the original setting. It uses
+              a perceptual loss, which is the weighted sum of two loss components: content loss and adversarial
+              loss. The content loss uses the euclidean distance between the VGG feature representations. The
+              adversarial loss generates highly realistic images that can help fool the discriminator. The
+              discriminator aims to train a generative model to fool a differentiable discriminator that is
+              trained to distinguish generated images from real images.
             </p>
             <div align="center">
-              <img src="img/srgan/exp1-img5.jpg" width="150px" alt="srgan exp1"/>
-              <img src="img/srgan/exp2-img5.jpg" width="150px" alt="srgan exp2"/>
-              <img src="img/srgan/hr_test_5.jpg" width="150px" alt="gt5"/>
-              </div>
+              <img src="img/srgan/exp1-img5.jpg" width="150px" alt="srgan exp1" />
+              <img src="img/srgan/exp2-img5.jpg" width="150px" alt="srgan exp2" />
+              <img src="img/srgan/hr_test_5.jpg" width="150px" alt="gt5" />
+            </div>
             <div align="center">
-              <img src="img/srgan/exp1-img10.jpg" width="150px" alt="srgan exp1"/>
-              <img src="img/srgan/exp2-img10.jpg" width="150px" alt="srgan exp2"/>
-              <img src="img/srgan/hr_test_10.jpg" width="150px" alt="gt5"/>
-              </div>
+              <img src="img/srgan/exp1-img10.jpg" width="150px" alt="srgan exp1" />
+              <img src="img/srgan/exp2-img10.jpg" width="150px" alt="srgan exp2" />
+              <img src="img/srgan/hr_test_10.jpg" width="150px" alt="gt5" />
+            </div>
             <div align="center">
-              <img src="img/srgan/exp1-img13.jpg" width="150px" alt="srgan exp1"/>
-              <img src="img/srgan/exp2-img13.jpg" width="150px" alt="srgan exp2"/>
-              <img src="img/srgan/hr_test_13.jpg" width="150px" alt="gt5"/>
-              <div class="img-caption" align="center">Outputs from SRGAN EXP1, EXP2, and ground truth HR image (left to right)</div>
+              <img src="img/srgan/exp1-img13.jpg" width="150px" alt="srgan exp1" />
+              <img src="img/srgan/exp2-img13.jpg" width="150px" alt="srgan exp2" />
+              <img src="img/srgan/hr_test_13.jpg" width="150px" alt="gt5" />
+              <div class="img-caption" align="center">Outputs from SRGAN EXP1, EXP2, and ground truth HR image (left to
+                right)</div>
             </div>
 
             <p class="text" align="justify">
-              As for SRGAN experiments, we also toggled the combination of MSE and VGG losses used for the generator network and ran the experiments under 
-              the same configurations. The training set is the entire CelebA dataset, which is a large-scale 
-              face attributes dataset with more than 200K celebrity images. It takes a very long time to train 
-              due to the limitations of our accessible machines. We trained each experiment in the chart above 
-              for 10 epochs on CelebA. The middle column is the different configurations of the generator loss 
-              function, and the rest of the settings remain identical for different experiments. The third 
-              column is the PSNR evaluation result from Set14 with a downsample factor of x4. As can be seen 
-              in the chart, EXP1's PSNR is lower than EXP2's, which shows adding a MSE component in generator's 
-              loss can achieve higher PSNR in the initial training epochs. As shown in these zebra pictures below, 
-              if we heavily rely on perceptual loss, it shows more contrast and details of the texture, which is 
-              not helpful to make the pictures look natural or smooth perceptually. However, it did help the 
-              model learn the textures fast. For comparison, our ESRGAN is trained 20 epochs on CelebA dataset and achieves 
+              As for SRGAN experiments, we also toggled the combination of MSE and VGG losses used for the generator
+              network and ran the experiments under
+              the same configurations. The training set is the entire CelebA dataset, which is a large-scale
+              face attributes dataset with more than 200K celebrity images. It takes a very long time to train
+              due to the limitations of our accessible machines. We trained each experiment in the chart above
+              for 10 epochs on CelebA. The middle column is the different configurations of the generator loss
+              function, and the rest of the settings remain identical for different experiments. The third
+              column is the PSNR evaluation result from Set14 with a downsample factor of x4. As can be seen
+              in the chart, EXP1's PSNR is lower than EXP2's, which shows adding a MSE component in generator's
+              loss can achieve higher PSNR in the initial training epochs. As shown in these zebra pictures below,
+              if we heavily rely on perceptual loss, it shows more contrast and details of the texture, which is
+              not helpful to make the pictures look natural or smooth perceptually. However, it did help the
+              model learn the textures fast. For comparison, our ESRGAN is trained 20 epochs on CelebA dataset and
+              achieves
               PSNR 24.22 on Set14 with a upsampling factor of 4.
             </p>
             <p class="text" align="justify">
-              
+
             </p>
-           
+
             <h2 id="conclusion">Conclusion</h2>
             <hr>
             <p class="text" align="justify">
-              
+
             </p>
-            
-            
+
+
             <h2 id="future">Future Work</h2>
             <hr>
+
             <p class="text" align="justify">
-              
+              In our project, we used VGG embeddings to extract features for
+              content loss. VGG network is a widely-used deep neural network
+              model in various computer vision tasks. With a pre-trained VGG
+              network, we extract high-level features from the low-resolution
+              input images, which then be used to guide the super-resolution
+              process and generate high-quality outputs. In the future, we plan
+              to further investigate the effectiveness of fine-tuning the VGG
+              network with specific downstream super-resolution tasks, which
+              could potentially improve the accuracy and efficiency of the
+              process of feature extraction. Overall, we plan to explore and
+              compare differnet embedding techniques and determine which
+              approach can better capture the underlying features of
+              low-resolution images and produce high-quality outputs.
+            </p>
+
+            <p class="text" align="justify">
+              Additionally, we want to explore more about the role of loss
+              function for different super-resolution DNN models. Specifically,
+              we want to expand our current focus on mean square error,
+              perceptual loss, and adversarial loss to more complicated
+              combination of them with various coefficients. We hope to gain a
+              deeper understanding of the underlying principles and mechanisms
+              of super-resolution ML models by thoroughly analyzing the
+              strengths and weaknesses of different loss functions and how they
+              affect the training process and the quality of the SR images with
+              different metrics such as PSNR and visual satisfaction.
+            </p>
+
+            <p class="text" align="justify">
+              Last but not least, we are interested in looking at how
+              super-resolution techniques could help with other computer vision
+              tasks, such as image classification and object detection.
+              Super-resolution can be seen as a data pre-processing step that
+              enhances the quality and resolution of the input images, which can
+              potentially benefit downstream tasks that rely on them. For
+              instance, in image classification tasks, higher resolution images
+              can provide more detailed features and improve the accuracy of the
+              classificaiton models. In addition, we would like to see how SR
+              techniques can interact with data augmentation to further enhance
+              the performance, accuracy, and generalization of the computer
+              vision models.
+            </p>
             </p>
 
 
 
             <h2 id="references">References</h2>
             <hr>
-            
-            
-            
+
+
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </body>
 
 </html>

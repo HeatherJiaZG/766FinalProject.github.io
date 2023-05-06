@@ -110,7 +110,6 @@
               <li><a href="#conclusion">Conclusion</a></li>
               <li><a href="#future">Future Work</a></li>
               <li><a href="#references">References</a></li>
-              <li><a href="#tool">TBD</a></li>
             </ul>
 
 
@@ -118,14 +117,14 @@
             <h2 id="importance">The Importance Of The Problem</h2>
             <hr>
             <!--This list is reversed on the website due to reverse number listing-->
-            <p class="text">
+            <p class="text" align="justify">
               The potential applications of the proposed project are numerous and exciting, with significant potential
               impact in various areas. People usually tend to use the highest quality possible for the videos they
-              watch, indicating how visual quality is crucial in everyday life. It is also possible to “re-generate”
+              watch, indicating how visual quality is crucial in everyday life. It is also possible to "re-generate"
               popular anime produced long ago and bring the beloved classics back to the audience. The SR techniques can
               also be applied to cameras to make the blur objects far away from the camera much clearer with higher
               resolution. Besides, old photo recovery could also be an exciting field to apply SR. Old family photos
-              from parents'/grandparents’ childhood could be restored with color and more details. It could also be
+              from parents'/grandparents' childhood could be restored with color and more details. It could also be
               applied to some historical pictures to make history more accessible and live to the public. The
               development of Computer Vision and SR approaches could push the state-of-the-art benchmark. Many proposed
               models exist, such as deeper networks with residual learning, Laplacian pyramid structure, and recursive
@@ -588,7 +587,7 @@
             <p class="text" align="justify">
               As for SRGAN experiments, we also toggled the combination of MSE and VGG losses used for the generator
               network and ran the experiments under
-              the same configurations. The training set is the entire CelebA dataset, which is a large-scale
+              the same configurations. The training set is the entire <a href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA</a> dataset, which is a large-scale
               face attributes dataset with more than 200K celebrity images. It takes a very long time to train
               due to the limitations of our accessible machines. We trained each experiment in the chart above
               for 10 epochs on CelebA. The middle column is the different configurations of the generator loss
@@ -609,7 +608,13 @@
             <h2 id="conclusion">Conclusion</h2>
             <hr>
             <p class="text" align="justify">
-
+              Image super-resolution is a classic computer vision technique that is used to produce a higher resolution image with more details and sharper edges than the original low-resolution image. However, this is an ill-posed problem since the high-frequency information that is lost during downsampling is difficult to recover. Deep learning techniques have shown promising results in solving the super-resolution problem. In this work, we selected three classic deep learning algorithms that solves single-image super-resolution problems and reimplemented them, which are SRCNN, SRGAN and ESRGAN. Our implementation of the three models are carefully fine-tuned and our SRCNN achieves even better results than the original publication. It has been a very fruitful and fun experience learning and implementing these deep learning SR techniques. 
+            </p>
+            <p class="text" align="justify">
+              SRCNN is a simple yet effective architecture that uses a three-layer neural network to learn the mapping between low-resolution and high-resolution images. SRGAN is a generative adversarial network that uses a discriminator network to distinguish between the generated high-resolution images and real high-resolution images. The generator network is trained to produce images that the discriminator cannot distinguish from the real ones, resulting in high-quality images. ESRGAN uses a novel architecture that incorporates residual blocks and a feature extraction network to improve the quality of the generated images.
+            </p>
+            <p class="text" align="justify">
+              In addition to implementing these models, we have also explored the effectiveness of different loss functions in training these models. More specifically, we investigated how VGG content loss and MSE loss functions affect model performance for the single-image super-resolution problem with a X4 upscaling factor on CNN and GAN architectures. The MSE loss function is commonly used for super-resolution. It measures the difference between the generated and ground truth images. However, it tends to create overly smooth images with less texture and contrast. On the other hand, the VGG content loss function uses a pre-trained VGG network to extract features from the generated and ground truth images. The difference between these features is then minimized to improve the overall quality of the generated images. While this loss function requires longer training time, it tends to produce visually pleasing results with sharper edges and more texture. Our experiments show that using a heavy content loss produces less visually pleasing results in early training. However, it does help the model learn the textures faster. Adding some MSE loss in the total loss function can help produce promising results even in the early epochs and speeds up the training. 
             </p>
 
 
@@ -665,7 +670,13 @@
 
             <h2 id="references">References</h2>
             <hr>
-
+            <ol >
+              <li>
+                <p class="text-small-margin">
+                  Dong, C., Loy, C. C., He, K., & Tang, X. (2015). Image super-resolution using deep convolutional networks. IEEE transactions on pattern analysis and machine intelligence, 38(2), 295-307.
+                </p>
+              </li>
+            </ol>
 
 
           </div>

@@ -167,10 +167,86 @@
               qualitative measures.
             </p>
 
+
+
+
             <h2 id="Methodology">Methodology</h2>
             <hr>
-            <h3 id="esrgan">SRCNN</h3>
-            <h3 id="esrgan">SRGAN</h3>
+            <h3 id="srcnn">SRCNN</h3>
+            <p class="text">
+              The SRCNN is the pioneer deep learning-based SR method proposed by Dong et al. in 2014. Here we present 
+              our initial implementation of the original plain SRCNN. For the next steps, we plan to augment its loss 
+              function using some SR tricks to improve the model.
+            </p>
+            <h4 id="Network Architecture">Network Architecture</h4>
+            <p class="text">
+              The SRCNN is a relatively simple deep learning model compared to other more complex architectures, 
+              which will be discussed in the following sections.  It consists of three two-dimensional convolutional 
+              layers, each serving a specific purpose in the super-resolution process. Here's a detailed explanation of the network structure:
+            </p>
+            <p class="text">
+              First Layer (Feature Extraction):
+              The input to the network is a low-resolution (LR) image that has been upsampled to the desired 
+              high-resolution size using bicubic interpolation. This upsampling step is performed before feeding 
+              the image into the network.
+              The first layer consists of a convolutional layer with multiple filters (e.g., 64 filters), a 
+              relatively large kernel size (e.g., 9x9), and a ReLU (Rectified Linear Unit) activation function.
+              This layer's purpose is to extract features from the upsampled LR image. The filters in this layer 
+              learn to recognize different image patterns, such as edges, textures, and shapes.
+            </p>
+            <p class="text">
+              Second Layer (Non-linear Mapping):
+              The second layer is another convolutional layer, typically with a smaller kernel size (e.g., 5x5 or 3x3) 
+              and a larger number of filters (e.g., 32 filters).
+              This layer is responsible for non-linear mapping, meaning it maps the extracted features from the 
+              first layer to a high-resolution feature space. It also uses a ReLU activation function to introduce 
+              non-linearity.
+            </p>
+            <p class="text">
+              Third Layer (Reconstruction):
+              The third and final layer is a convolutional layer with a single filter and a small kernel size 
+              (e.g., 5x5 or 3x3).
+              This layer's purpose is to reconstruct the high-resolution image from the feature maps generated 
+              by the previous layer. It does not use an activation function, as the output needs to be a continuous range of pixel intensity values.
+              The output of this layer is the final high-resolution image that the network generates.
+              The SRCNN is trained using pairs of low-resolution and corresponding high-resolution images. 
+              The objective is to minimize the difference (e.g., using Mean Squared Error) between the predicted 
+              high-resolution image and the ground truth high-resolution image. By adjusting the weights of the 
+              filters during training, the network learns to produce high-resolution images that are close to 
+              the ground truth.
+            </p>
+
+            <div align="center">
+              <img src="img/srcnn/srcnn-loss.JPG" width="340px" alt="srcnn exp1"/> 
+              <!-- <div class="img-caption" align="center">Input LR image, SRCNN generated image, and HR image (left to right)</div> -->
+            </div>
+
+            <p class="text">
+              For SRCNN, the loss function is defined as the pixel-wise mean square error between the output image 
+              F(Y, Theta) and the ground truth image X, which means it will lead to maximum the peak 
+              signal-to-noise ratio. But here, we believe the MSE loss is not the optimal loss function for capturing 
+              the perceptual distance, so we tried the vgg loss in the experiment.
+            </p>
+
+            <div align="center">
+              <img src="img/srcnn/input1.png" width="200px" alt="srcnn exp1"/> 
+              <img src="img/srcnn/srcnn1.png" width="200px" alt="srcnn exp2"/>
+              <img src="img/srcnn/hr1.png" width="200px" alt="srcnn exp3"/>
+              <div class="img-caption" align="center">Input LR image, SRCNN generated image, and HR image (left to right)</div>
+            </div>
+
+            <p class="text">
+              In summary, the SRCNN consists of three convolutional layers: a feature extraction layer, a non-linear 
+              mapping layer, and a reconstruction layer. The architecture is simple yet effective for super-resolution 
+              tasks. However, more recent methods have improved upon this structure, introducing deeper networks, 
+              residual connections, and other enhancements to achieve better performance. An output image pair of 
+              our trained SRCNN network is in the figure above. 
+            </p>
+
+
+            <h3 id="srgan">SRGAN</h3>
+
+
 
             <h3 id="esrgan">ESRGAN</h3>
             <p class="text">
@@ -236,6 +312,8 @@
             </p>
             <div class="container">
               <div class="image"> <img src="img/esrgan-ragan.png" height="850px" /> </div>
+            </div>
+            <div class="container">
               <div class="image"> <img src="img/esrgan-ragan_code.png" height="850px" /> </div>
             </div>
 
